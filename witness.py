@@ -1,9 +1,10 @@
-#! /bin/env python3
+#! /bin/env python2
 """A simple command line journaling application"""
 
 
 # lhx?
 
+from __future__ import print_function
 from datetime import date
 from os import path, makedirs
 from argparse import ArgumentParser
@@ -35,19 +36,20 @@ def main():
     entry = path.join(path.expanduser(ENTRY_DIR), make_title())
 
     # Ensure that our journalling dir exists
-    makedirs(ENTRY_DIR, exist_ok="true")
-
+    if not path.exists(ENTRY_DIR):
+        makedirs(ENTRY_DIR)
 
     if len(args.text) > 0:
         # Put together line
-        line = " ".join(args.text) + '\n'
+        line = " ".join(args.text)
 
         # write!
-        with open(entry, 'a', encoding="UTF-8") as outfile:
+        with open(entry, 'a') as outfile:
             outfile.write(line)
+            outfile.write('\n')
 
     elif path.isfile(entry):
-        with open(entry, encoding="UTF-8") as outfile:
+        with open(entry) as outfile:
             print(outfile.read(), end="")
 
 

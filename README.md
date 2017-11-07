@@ -19,4 +19,4 @@ does nothing if this file does not exist.
 
 `<today's date>` is formatted as yyyy-mm-dd, or strfmt: `%Y-%m-%d`
 
-You'll need python 3 for this to work.
+You'll need python 2 for this to work.
