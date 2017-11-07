@@ -1,4 +1,5 @@
 #! /bin/env python3
+"""A simple command line journaling application"""
 
 
 # lhx?
@@ -8,8 +9,8 @@ from os import path, makedirs
 from argparse import ArgumentParser
 
 
-TITLEFORMAT = "%Y-%m-%d.txt"       # strftime formatting
-ENTRY_DIR = "/home/brynr/journal"  # must be absolute
+TITLEFORMAT = "%Y-%m-%d.txt"              # strftime formatting
+ENTRY_DIR = path.expanduser("~/journal")  # may use ~ for user dir elision
 
 
 def make_title():
@@ -31,7 +32,7 @@ def main():
     args = parse_args()
 
     # Generate fully resolved name for entry
-    entry = path.join(ENTRY_DIR, make_title())
+    entry = path.join(path.expanduser(ENTRY_DIR), make_title())
 
     # Ensure that our journalling dir exists
     makedirs(ENTRY_DIR, exist_ok="true")
