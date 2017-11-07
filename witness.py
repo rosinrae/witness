@@ -37,12 +37,18 @@ def main():
     # Ensure that our journalling dir exists
     makedirs(ENTRY_DIR, exist_ok="true")
 
-    # Put together line
-    line = " ".join(args.text) + '\n'
 
-    # write!
-    with open(entry, 'a', encoding="UTF-8") as outfile:
-        outfile.write(line)
+    if len(args.text) > 0:
+        # Put together line
+        line = " ".join(args.text) + '\n'
+
+        # write!
+        with open(entry, 'a', encoding="UTF-8") as outfile:
+            outfile.write(line)
+
+    elif path.isfile(entry):
+        with open(entry, encoding="UTF-8") as outfile:
+            print(outfile.read(), end="")
 
 
 if __name__ == "__main__":
