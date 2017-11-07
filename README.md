@@ -8,12 +8,12 @@ usage:
 ```
 >$ witness <line of text>
 ```
-writes <line of text> to ~/journal/<today's date>.txt
+writes `<line of text>` to `~/journal/<today's date>.txt`
 
 ```
 >$ witness
 ```
-prints contents of ~/journal/<today's date>.txt
+prints contents of `~/journal/<today's date>.txt`
 does nothing if this file does not exist.
 
-<today's date> is formatted as yyyy-mm-dd, or strfmt: %Y-%m-%d
+`<today's date>` is formatted as yyyy-mm-dd, or strfmt: `%Y-%m-%d`
